@@ -9,19 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $user = new User();
     if ($user->authenticate($username, $password)) {
-        // redirect to members page on success
-        header('Location: members.php');
-        exit;
+        // redirect to index page on success
+        Utility::redirect('index.php');
+    } else {
+        // redirect back to login on failure with message
+        Utility::redirect('login.php', 'Invalid username or password.', ['username' => $username]);
     }
 }
-// redirect back to login on failure
-header('Location: login.php');
-exit;
 // redirect back to login when accessed directly
-
-$user = new User();
-if ($user->authenticate($username, $password)) {
-   // login sukses
-} else {
-   // login gagal
-}
+Utility::redirect('login.php');

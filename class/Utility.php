@@ -14,13 +14,13 @@ class Utility
     // Show flash message
 
     // Check user login status
-    // public static function checkLogin($login=true) {
-    //     if ($login && !isset($_SESSION['user'])) {
-    //         self::redirect('login.php', "Please log in to access this page.");
-    //     } elseif (!$login && isset($_SESSION['user'])) {
-    //         self::redirect('index.php');
-    //     }
-    // }
+    public static function checkLogin($login=true) {
+        if ($login && !isset($_SESSION['user'])) {
+            self::redirect('login.php');
+        } elseif (!$login && isset($_SESSION['user'])) {
+            self::redirect('index.php');
+        }
+    }
     // Display navigation menu
     public static function showNav($pages = NAV_PAGES)
     {
@@ -34,6 +34,8 @@ class Utility
     }
     // Logout user
     public static function logout() {
+        unset($_SESSION['user']);
+        self::redirect('login.php');
     }
     // Get prefill data for specified keys
 
