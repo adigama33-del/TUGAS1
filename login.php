@@ -33,6 +33,8 @@ Utility::checkLogin(false);
       <div class="row">
         <button type="submit">Login</button>
       </div>
+      <br>
+      <a href="register.php">Belum punya akun?</a>
     </form>
   </main>
 </body>

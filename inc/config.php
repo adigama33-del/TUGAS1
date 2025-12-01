@@ -13,7 +13,7 @@ const DB_USER = 'root';       // sesuaikan dengan user MySQL Anda
 const DB_PASS = 'Nanimo33.';   // sesuaikan dengan password MySQL Anda
 const DB_NAME = 'warung_madura';   // sesuaikan dengan nama database yang sudah dibuat
 // Define base URL
-const BASE_URL = 'http://localhost:8000/TUGAS1/'; // sesuaikan dengan nama folder
+const BASE_URL = 'http://localhost:8000/'; // sesuaikan dengan nama folder
 
 // navigasi config
 const NAV_PAGES = [

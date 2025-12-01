@@ -6,7 +6,7 @@ class Utility
     // Redirect to a different page with an optional message and prefill data
     public static function redirect($url, $msg = '', $prefill = []) {
         // You can extend this method later to handle flash messages and prefill data
-
+        session_write_close();
         header("Location: " . BASE_URL . $url);
         exit();
     }
