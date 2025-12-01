@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = new User();
     if ($user->authenticate($username, $password)) {
         // redirect to index page on success
+        Utility::clearPrefill();
         Utility::redirect('index.php');
     } else {
         // redirect back to login on failure with message

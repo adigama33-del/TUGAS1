@@ -1,11 +1,5 @@
 <?php
-
-// require necessary files
 require_once 'inc/config.php';
-// check if user is logged in
-// Utility::checkLogin();
-// get prefill data
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,10 +15,9 @@ require_once 'inc/config.php';
   <header>
     <h1>Daftar</h1>
   </header>
-  <?php Utility::showNav(); ?>
   <main>
     <section>
-      <form action="save.php" method="post" id="form-user">
+      <form action="saveRegister.php" method="post" id="form-user">
         <div class="row"></div>
         <div class="row">
           <label for="username">Username:</label>
@@ -48,6 +41,7 @@ require_once 'inc/config.php';
           <input type="text" id="city" name="city" value="" required>
         </div>
         <hr>
+        <div class="row"><?php Utility::showFlash(); ?></div>
         <div class="row">
           <button type="submit">Daftar</button>
         </div>

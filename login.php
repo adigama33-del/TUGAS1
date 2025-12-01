@@ -5,7 +5,7 @@ require_once 'inc/config.php';
 // check if user is logged in
 Utility::checkLogin(false);
 // get prefill data
-
+$prefill = Utility::getPrefill(['username']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,12 +24,14 @@ Utility::checkLogin(false);
       <div class="row"></div>
       <div class="row">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" value="" autofocus required>
+        <input type="text" id="username" name="username" value="<?= $prefill['username'] ?>" autofocus required>
       </div>
       <div class="row">
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
       </div>
+      <br>
+      <div class="row"><?php Utility::showFlash(); ?></div>
       <div class="row">
         <button type="submit">Login</button>
       </div>

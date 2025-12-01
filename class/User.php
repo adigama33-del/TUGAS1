@@ -75,7 +75,37 @@ class User
     $this->password = password_hash($password, PASSWORD_DEFAULT);
   }
   // Save user (insert or update)
-
+  public function save() {
+    // Jika ID sudah ada, lakukan UPDATE (Opsional untuk register, tapi bagus untuk edit profil nanti)
+    if (isset($this->id)) {
+      $sql = "UPDATE users SET username = :username, password = :password, fullname = :fullname, city = :city WHERE id = :id";
+      $params = [
+        'username' => $this->username,
+        'password' => $this->password,
+        'fullname' => $this->fullname,
+        'city' => $this->city,
+        'id' => $this->id
+      ];
+      $stmt = $this->db->query($sql, $params);
+      return $stmt !== false;
+    } 
+    // Jika ID belum ada, lakukan INSERT (Untuk Register)
+    else {
+      $sql = "INSERT INTO users (username, password, fullname, city, created_at) VALUES (:username, :password, :fullname, :city, NOW())";
+      $params = [
+        'username' => $this->username,
+        'password' => $this->password,
+        'fullname' => $this->fullname,
+        'city' => $this->city
+      ];
+      $stmt = $this->db->query($sql, $params);
+      if ($stmt !== false) {
+        $this->id = $this->db->conn->lastInsertId();
+        return true;
+      }
+      return false;
+    }
+  }
   // Remove user
 
 }
