@@ -112,3 +112,36 @@ th {
 tr:hover {
   background-color: #eee;
 }
+.inventory-update{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  align-items: center;
+}
+.inventory-update ul li a{
+  text-decoration: none;
+  color: #234;
+  padding: 5px 10px;
+  border: 1px solid #234;
+  border-radius: 3px;
+  transition: background-color 0.3s, color 0.3s;
+  
+}
+
+
+.inventory-update form {
+  display: flex;
+  gap: 5px;
+
+}
+.inventory-update #update-links a{
+  text-decoration: none;
+  color: #234;
+  padding: 5px 10px;
+  border: 1px solid #234;
+  border-radius: 3px;
+}
+.inventory-update #update-links a:hover{
+  background-color: #234;
+  color: #fff;
+}

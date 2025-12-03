@@ -22,9 +22,9 @@ Utility::checkLogin();
   <?php Utility::showNav(); ?>  
   <main>
     <section>
-      <h2>Welcome to the Dashboard</h2>
-      <p>This is your dashboard where you can manage your content. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis, numquam illum dolor quia sapiente blanditiis possimus magnam fugiat beatae rerum. Nemo quae quas minus velit soluta aperiam aspernatur hic incidunt.</p>
-      <p>Your data:
+      <h2>Selamat Datang</h2>
+      <p>Anda adalah admin yang dapat mengelola inventory warung ini. Kamu dapat mengakses menu navigasi diatas untuk mengelola produk yang ada di inventory warung.</p>
+      <p>Data anda:
       <ul>
         <li>ID: <?php echo $_SESSION['user']['id']; ?></li>
         <li>Username: <?php echo $_SESSION['user']['username']; ?></li>

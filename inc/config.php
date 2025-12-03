@@ -17,10 +17,8 @@ const BASE_URL = 'http://localhost:8000/'; // sesuaikan dengan nama folder
 
 // navigasi config
 const NAV_PAGES = [
-    ['title' => 'Home',    'url' => 'index.php'],
-    ['title' => 'tambah',     'url' => 'create.php'],
-    ['title' => 'Profile', 'url' => 'profile.php'],
-    ['title' => 'Admin', 'url' =>  'admin.php'],
-    ['title' => 'Login',  'url' => 'login.php'],    
-    ['title' => 'Logout',  'url' => 'logout.php']
+    ['title' => 'Home', 'url' => 'index.php'],
+    ['title' => 'Inventory', 'url' => 'inventory.php'],
+    ['title' => 'Admin','url' =>  'admin.php'], 
+    ['title' => 'Logout','url' => 'logout.php']
 ];
