@@ -52,23 +52,22 @@ class Products{
     return false;
   }
   public function save() {
-        if (isset($this->id)) {
-            $sql = "INSERT INTO products (name, category, price, stock, image_path, status, created_at, updated_at) 
-                    VALUES (:name, :category, :price, :stock, :image_path, :status, NOW(), NOW())";
-            $params = [
-                'name' => $this->name,
-                'category' => $this->category,
-                'price' => $this->price,
-                'stock' => $this->stock,
-                'image_path' => $this->image_path,
-                'status' => $this->status
-            ];
-            $stmt = $this->db->query($sql, $params);
-            if ($stmt !== false) {
-                $this->id = $this->db->conn->lastInsertId();
-                return true;
-            }
-            return false;
-        }
+      $sql = "INSERT INTO products (name, category, price, stock, image_path, status, created_at, updated_at) 
+        VALUES (:name, :category, :price, :stock, :image_path, :status, NOW(), NOW())";
+      $params = [
+        'name' => $this->name,
+        'category' => $this->category,
+        'price' => $this->price,
+        'stock' => $this->stock,
+        'image_path' => $this->image_path,
+        'status' => $this->status
+      ];
+      $stmt = $this->db->query($sql, $params);
+      if ($stmt !== false) {
+        $this->id = $this->db->conn->lastInsertId();
+        return true;
+      }
+      return false;
+      
     }
 }

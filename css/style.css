@@ -145,3 +145,10 @@ tr:hover {
   background-color: #234;
   color: #fff;
 }
+.product-img {
+    width: 100px;    
+    height: 100px;  
+    object-fit: cover;  
+    border-radius: 5px; 
+    border: 1px solid #ccc;
+}

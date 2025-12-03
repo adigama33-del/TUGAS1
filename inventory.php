@@ -62,7 +62,12 @@ $Inventory = $product->getAll();
           foreach ($Inventory as $inventory) {
             echo '<tr>';
             echo '<td>' . htmlspecialchars($inventory['id']) . '</td>';
-            echo '<td>' . htmlspecialchars($inventory['image_path']) . '</td>';
+            $imgPath = $inventory['image_path'];
+              if (!empty($imgPath)) {
+                  echo '<td><img src="' . htmlspecialchars($imgPath) . '" alt="Produk"></td>';
+              } else {
+                  echo '<td>No Image</td>';
+              }
             echo '<td>' . htmlspecialchars($inventory['name']) . '</td>';
             echo '<td>' . htmlspecialchars($inventory['category']) . '</td>';
             echo '<td>' . htmlspecialchars($inventory['price']) . '</td>';
