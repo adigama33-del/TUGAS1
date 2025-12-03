@@ -26,7 +26,7 @@ Utility::checkLogin();
                     <label for="category">Kategori:</label>
                     <select id="category" name="category" required>
                         <option value="" disabled selected>Pilih Kategori</option>
-                        <option value="Sembako">Makanan</option>
+                        <option value="Sembako">Sembako</option>
                         <option value="Minuman">Minuman</option>
                         <option value="Makanan Ringan">Makanan Ringan</option>
                         <option value="Rokok">Rokok</option>
@@ -60,6 +60,7 @@ Utility::checkLogin();
                 </div>
 
                 <hr>
+                <div class="row"><?php Utility::showFlash(); ?></div>
                 <div class="row">
                     <button type="submit">Save Product</button>
                 </div>
