@@ -40,7 +40,7 @@ section {
 .row {
   margin-bottom: 15px;
 }
-form#form-user {
+form {
   background: #fff;
   padding: 20px;
   max-width: 600px;
