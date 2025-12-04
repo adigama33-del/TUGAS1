@@ -1,0 +1,9 @@
+# Abaikan folder sistem
+.DS_Store
+Thumbs.db
+
+# Abaikan gambar yang diupload user
+uploads/*
+
+# TAPI jangan abaikan file penjaga ini (agar folder uploads tetap ada)
+!uploads/.gitkeep
