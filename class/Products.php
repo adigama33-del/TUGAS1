@@ -110,4 +110,16 @@ class Products{
         }
         return false;
     }
+    //Pencarian
+    public function search($keyword) {
+      $sql = "SELECT * FROM products 
+              WHERE name LIKE :keyword 
+              OR category LIKE :keyword 
+              ORDER BY updated_at DESC, id ASC";
+      
+      $params = ['keyword' => "%$keyword%"];
+      
+      $stmt = $this->db->query($sql, $params);
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -6,7 +6,14 @@ Utility::checkLogin();
 
 // load all Inventory
 $product = new Products();
-$Inventory = $product->getAll();
+
+$keyword = $_GET['q'] ?? '';
+
+if (!empty($keyword)) {
+    $Inventory = $product->search($keyword);
+} else {
+    $Inventory = $product->getAll();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +41,12 @@ $Inventory = $product->getAll();
             </div>
             
             <form action="" method="GET" class="search-form">
-              <input type="text" name="q" placeholder="Search product..." class="search-input">
+              <input type="text" name="q" placeholder="Search product..." class="search-input" value="<?= htmlspecialchars($keyword) ?>">
               <button type="submit" class="search-btn">Search</button>
+              
+              <?php if(!empty($keyword)): ?>
+                  <a href="inventory.php" class="btn-action" style="background:#6c757d; margin-left:5px;">Reset</a>
+              <?php endif; ?>
             </form>
         </div>
       </div>
