@@ -59,9 +59,10 @@ class Products{
     }
     return false;
   }
+  //Save
   public function save() {
         if (isset($this->id)) {
-            // Edot
+            // Edit
             $sql = "UPDATE products SET name=:name, category=:category, price=:price, stock=:stock, image_path=:image_path, status=:status, updated_at=NOW() WHERE id=:id";
             $params = [
                 'name' => $this->name,
@@ -93,5 +94,20 @@ class Products{
             }
             return false;
         }
+    }
+    //Delete
+    public function delete() {
+        //Hapus gambar
+        if ($this->image_path && file_exists($this->image_path)) {
+            unlink($this->image_path);
+        }
+        //Hapus data
+        if (isset($this->id)) {
+            $sql = "DELETE FROM products WHERE id = :id";
+            $params = ['id' => $this->id];
+            $stmt = $this->db->query($sql, $params);
+            return $stmt !== false;
+        }
+        return false;
     }
 }

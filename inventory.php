@@ -83,7 +83,7 @@ $Inventory = $product->getAll();
             //Edit
             echo '<td>';
             echo '<a href="edit.php?id=' . $inv['id'] . '" class="btn-action btn-edit">Edit</a>';
-            echo '<a href="deleteProduct.php?id=' . $inv['id'] . '" class="btn-action btn-delete">Delete</a>';
+            echo '<a href="deleteProduct.php?id=' . $inv['id'] . '" class="btn-action btn-delete" onclick="return confirm(\'Yakin ingin menghapus produk ini?\')">Delete</a>';
             echo '</td>';
 
             echo '</tr>';
