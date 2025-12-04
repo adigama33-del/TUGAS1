@@ -81,7 +81,7 @@ if (!$id || !$product->setById($id)) {
                 <hr>
                 <div class="row">
                     <button type="submit">Update Produk</button>
-                    <a href="inventory.php" style="margin-left: 10px;">Batal</a>
+                    <a href="inventory.php" class="btn-action btn-cancel">Batal</a>
                 </div>
             </form>
         </section>

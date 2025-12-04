@@ -63,6 +63,7 @@ Utility::checkLogin();
                 <div class="row"><?php Utility::showFlash(); ?></div>
                 <div class="row">
                     <button type="submit">Save Product</button>
+                    <a href="inventory.php" class="btn-action btn-cancel">Batal</a>
                 </div>
             </form>
         </section>

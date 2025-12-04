@@ -146,10 +146,11 @@ tr:hover {
   color: #fff;
 }
 .product-img {
-    width: 100px;    
-    height: 100px;  
-    object-fit: cover;  
-    border-radius: 5px; 
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
     border: 1px solid #ccc;
 }
 
@@ -183,12 +184,15 @@ tr:hover {
 .btn-action:hover {
     opacity: 0.8;
 }
+.btn-action.btn-cancel {
+    background-color: #6c757d;
 
+}
 .btn-edit {
     background-color: #ffc107;
     color: #212529;
 }
-.btn-edfit:hover {
+.btn-edit:hover {
     background-color: #e0a800;
 }
 
@@ -235,10 +239,3 @@ tr:hover {
     gap: 10px;
 }
 
-.product-img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}

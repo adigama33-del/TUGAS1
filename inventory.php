@@ -45,7 +45,7 @@ if (!empty($keyword)) {
               <button type="submit" class="search-btn">Search</button>
               
               <?php if(!empty($keyword)): ?>
-                  <a href="inventory.php" class="btn-action" style="background:#6c757d; margin-left:5px;">Reset</a>
+                  <a href="inventory.php" class="btn-action btn-cancel">Reset</a>
               <?php endif; ?>
             </form>
         </div>
@@ -76,7 +76,7 @@ if (!empty($keyword)) {
             //Gambar
             echo '<td>';
             if (!empty($inv['image_path'])) {
-                echo '<img src="' . htmlspecialchars($inv['image_path']) . '" class="product-thumbnail">';
+                echo '<img src="' . htmlspecialchars($inv['image_path']) . '" class="product-img">';
             } else {
                 echo '<span style="color:grey; font-size:12px;">No Image</span>';
             }
