@@ -17,7 +17,7 @@ class Products{
   }
   
   public function getAll(){
-    $sql = "SELECT * FROM products ORDER BY updated_at ASC, id ASC";
+    $sql = "SELECT * FROM products ORDER BY updated_at DESC, created_at DESC, id ASC";
     $stmt = $this->db->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
@@ -27,13 +27,21 @@ class Products{
   public function setPrice($price){
     $this->price= $price;
   }
+  public function getPrice(){
+    return $this->price;
+  }
   public function setStock($stock){
     $this->stock= $stock;
+  }
+  public function getStock(){
+    return $this->stock;
   }
   public function setStatus($status){
     $this->status = $status;
   } 
-
+  public function getStatus(){
+    return $this->status;
+  }
   public function setById($id)
   {
     $sql = "SELECT * FROM products WHERE id = :id LIMIT 1";
@@ -52,22 +60,38 @@ class Products{
     return false;
   }
   public function save() {
-      $sql = "INSERT INTO products (name, category, price, stock, image_path, status, created_at, updated_at) 
-        VALUES (:name, :category, :price, :stock, :image_path, :status, NOW(), NOW())";
-      $params = [
-        'name' => $this->name,
-        'category' => $this->category,
-        'price' => $this->price,
-        'stock' => $this->stock,
-        'image_path' => $this->image_path,
-        'status' => $this->status
-      ];
-      $stmt = $this->db->query($sql, $params);
-      if ($stmt !== false) {
-        $this->id = $this->db->conn->lastInsertId();
-        return true;
-      }
-      return false;
-      
+        if (isset($this->id)) {
+            // Edot
+            $sql = "UPDATE products SET name=:name, category=:category, price=:price, stock=:stock, image_path=:image_path, status=:status, updated_at=NOW() WHERE id=:id";
+            $params = [
+                'name' => $this->name,
+                'category' => $this->category,
+                'price' => $this->price,
+                'stock' => $this->stock,
+                'image_path' => $this->image_path,
+                'status' => $this->status,
+                'id' => $this->id
+            ];
+            $stmt = $this->db->query($sql, $params);
+            return $stmt !== false;
+        } else {
+            // Add
+            $sql = "INSERT INTO products (name, category, price, stock, image_path, status, created_at, updated_at) 
+                    VALUES (:name, :category, :price, :stock, :image_path, :status, NOW(), NOW())";
+            $params = [
+                'name' => $this->name,
+                'category' => $this->category,
+                'price' => $this->price,
+                'stock' => $this->stock,
+                'image_path' => $this->image_path,
+                'status' => $this->status
+            ];
+            $stmt = $this->db->query($sql, $params);
+            if ($stmt !== false) {
+                $this->id = $this->db->conn->lastInsertId();
+                return true;
+            }
+            return false;
+        }
     }
 }

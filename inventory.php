@@ -1,7 +1,7 @@
 <?php
 // require necessary files
 require_once 'inc/config.php';
-// check if product is logged in
+// check if user is logged in
 Utility::checkLogin();
 
 // load all Inventory
@@ -27,53 +27,65 @@ $Inventory = $product->getAll();
     <section>
       <div>
         <h2>Inventory Table</h2>
-        <div class="inventory-update">
-            <div id="update-links">
-              <a href="create.php">Add</a>
-              <a href="edit.php">Edit</a>
-              <a href="">Delete</a>
+        <div style="text-align:center;"><?php Utility::showFlash(); ?></div>
+        <div class="inventory-header">
+            <div>
+              <a href="create.php" class="btn-add">+ Add New Product</a>
             </div>
-            <form action="">
-              <input type="text" placeholder="Search...">
-              <button type="submit">Search</button>
+            
+            <form action="" method="GET" class="search-form">
+              <input type="text" name="q" placeholder="Search product..." class="search-input">
+              <button type="submit" class="search-btn">Search</button>
             </form>
         </div>
       </div>
-      <div class="row"></div>
+      
       <table>
         <thead>
           <tr>
             <th>ID</th>
             <th>Image</th>
             <th>Product Name</th>
-            <th>category</th>
+            <th>Category</th>
             <th>Price</th>
             <th>Stock</th>
             <th>Status</th>
-            <th>&nbsp;</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <!-- Show Inventory data -->
           <?php
           if (empty($Inventory)) {
-            echo '<tr><td colspan="6">Belum ada data product.</td></tr>';
+            echo '<tr><td colspan="8" style="text-align:center;">Belum ada data product.</td></tr>';
           }
-          foreach ($Inventory as $inventory) {
+          foreach ($Inventory as $inv) {
             echo '<tr>';
-            echo '<td>' . htmlspecialchars($inventory['id']) . '</td>';
-            $imgPath = $inventory['image_path'];
-              if (!empty($imgPath)) {
-                  echo '<td><img src="' . htmlspecialchars($imgPath) . '" alt="Produk"></td>';
-              } else {
-                  echo '<td>No Image</td>';
-              }
-            echo '<td>' . htmlspecialchars($inventory['name']) . '</td>';
-            echo '<td>' . htmlspecialchars($inventory['category']) . '</td>';
-            echo '<td>' . htmlspecialchars($inventory['price']) . '</td>';
-            echo '<td>' . htmlspecialchars($inventory['stock']) . '</td>';
-            echo '<td>' . htmlspecialchars($inventory['status']) . '</td>';
-            echo '<td>&nbsp;</td>';
+            echo '<td>' . htmlspecialchars($inv['id']) . '</td>';
+            
+            //Gambar
+            echo '<td>';
+            if (!empty($inv['image_path'])) {
+                echo '<img src="' . htmlspecialchars($inv['image_path']) . '" class="product-thumbnail">';
+            } else {
+                echo '<span style="color:grey; font-size:12px;">No Image</span>';
+            }
+            echo '</td>';
+
+            echo '<td>' . htmlspecialchars($inv['name']) . '</td>';
+            echo '<td>' . htmlspecialchars($inv['category']) . '</td>';
+            echo '<td>Rp ' . number_format($inv['price'], 0, ',', '.') . '</td>';
+            echo '<td>' . htmlspecialchars($inv['stock']) . '</td>';
+            
+            
+            $statusColor = ($inv['status'] == 'active') ? 'green' : 'red';
+            echo '<td style="color:'.$statusColor.'; font-weight:bold;">' . ucfirst(htmlspecialchars($inv['status'])) . '</td>';
+            
+            //Edit
+            echo '<td>';
+            echo '<a href="edit.php?id=' . $inv['id'] . '" class="btn-action btn-edit">Edit</a>';
+            echo '<a href="deleteProduct.php?id=' . $inv['id'] . '" class="btn-action btn-delete">Delete</a>';
+            echo '</td>';
+
             echo '</tr>';
           }
           ?>
